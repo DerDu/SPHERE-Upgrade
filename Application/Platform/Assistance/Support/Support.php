@@ -1,0 +1,54 @@
+<?php
+namespace SPHERE\Application\Platform\Assistance\Support;
+
+use SPHERE\Application\IModuleInterface;
+use SPHERE\Application\IServiceInterface;
+use SPHERE\Common\Main;
+use SPHERE\Common\Window\Navigation\Link;
+
+/**
+ * Class Support
+ *
+ * @package SPHERE\Application\System\Assistance\Support
+ */
+class Support implements IModuleInterface
+{
+
+    public static function registerModule()
+    {
+
+        /**
+         * Register Navigation
+         */
+//        Main::getDisplay()->addModuleNavigation(
+//            new Link(new Link\Route(__NAMESPACE__), new Link\Name('Support'))
+//        );
+        /**
+         * Register Route
+         */
+        Main::getDispatcher()->registerRoute(
+            Main::getDispatcher()->createRoute(__NAMESPACE__,
+                'Frontend::frontendTicket'
+            )
+                ->setParameterDefault('TicketSubject', null)
+                ->setParameterDefault('TicketMessage', null)
+        );
+    }
+
+    /**
+     * @return IServiceInterface
+     */
+    public static function useService()
+    {
+        // TODO: Implement useService() method.
+    }
+
+    /**
+     * @return Frontend
+     */
+    public static function useFrontend()
+    {
+
+        return new Frontend();
+    }
+}
