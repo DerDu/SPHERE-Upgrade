@@ -6,14 +6,14 @@ use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\Table;
 use SPHERE\Application\Platform\Gatekeeper\Authorization\Account\Account;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * @Entity
  * @Table(name="tblSetting")
  * @Cache(usage="READ_ONLY")
  */
-class TblSetting extends Element
+class TblSetting extends AbstractEntity
 {
 
     const ATTR_TBL_ACCOUNT = 'tblAccount';

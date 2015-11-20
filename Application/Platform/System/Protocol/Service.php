@@ -7,8 +7,8 @@ use SPHERE\Application\Platform\System\Archive\Service\Entity\TblArchive;
 use SPHERE\Application\Platform\System\Protocol\Service\Data;
 use SPHERE\Application\Platform\System\Protocol\Service\Entity\TblProtocol;
 use SPHERE\Application\Platform\System\Protocol\Service\Setup;
-use SPHERE\System\Database\Binding\AbstractService;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractService;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * Class Service
@@ -41,13 +41,13 @@ class Service extends AbstractService
 
     /**
      * @param string  $DatabaseName
-     * @param Element $Entity
+     * @param AbstractEntity $Entity
      *
      * @return false|TblProtocol
      */
     public function createInsertEntry(
         $DatabaseName,
-        Element $Entity
+        AbstractEntity $Entity
     ) {
 
         $tblAccount = Account::useService()->getAccountBySession();
@@ -75,15 +75,15 @@ class Service extends AbstractService
 
     /**
      * @param string  $DatabaseName
-     * @param Element $From
-     * @param Element $To
+     * @param AbstractEntity $From
+     * @param AbstractEntity $To
      *
      * @return false|TblProtocol
      */
     public function createUpdateEntry(
         $DatabaseName,
-        Element $From,
-        Element $To
+        AbstractEntity $From,
+        AbstractEntity $To
     ) {
 
         $tblAccount = Account::useService()->getAccountBySession();
@@ -113,13 +113,13 @@ class Service extends AbstractService
 
     /**
      * @param string  $DatabaseName
-     * @param Element $Entity
+     * @param AbstractEntity $Entity
      *
      * @return false|TblProtocol
      */
     public function createDeleteEntry(
         $DatabaseName,
-        Element $Entity = null
+        AbstractEntity $Entity = null
     ) {
 
         $tblAccount = Account::useService()->getAccountBySession();

@@ -6,14 +6,14 @@ use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\Table;
 use SPHERE\Application\Billing\Accounting\Account\Account;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * @Entity
  * @Table(name="tblAccountKey")
  * @Cache(usage="NONSTRICT_READ_WRITE")
  */
-class TblAccountKey extends Element
+class TblAccountKey extends AbstractEntity
 {
 
     const ATTR_TBL_ACCOUNT_KEY_TYPE = 'tblAccountKeyType';

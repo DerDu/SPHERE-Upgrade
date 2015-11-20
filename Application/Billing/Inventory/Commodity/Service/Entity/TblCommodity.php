@@ -6,14 +6,14 @@ use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\Table;
 use SPHERE\Application\Billing\Inventory\Commodity\Commodity;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * @Entity
  * @Table(name="tblCommodity")
  * @Cache(usage="NONSTRICT_READ_WRITE")
  */
-class TblCommodity extends Element
+class TblCommodity extends AbstractEntity
 {
 
     const ATTR_NAME = 'Name';

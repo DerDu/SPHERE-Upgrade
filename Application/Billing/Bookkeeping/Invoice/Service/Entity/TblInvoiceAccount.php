@@ -8,14 +8,14 @@ use Doctrine\ORM\Mapping\Table;
 use SPHERE\Application\Billing\Accounting\Account\Account;
 use SPHERE\Application\Billing\Accounting\Account\Service\Entity\TblAccount;
 use SPHERE\Application\Billing\Accounting\Basket\Basket;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * @Entity
  * @Table(name="tblInvoiceAccount")
  * @Cache(usage="NONSTRICT_READ_WRITE")
  */
-class TblInvoiceAccount extends Element
+class TblInvoiceAccount extends AbstractEntity
 {
 
     /**

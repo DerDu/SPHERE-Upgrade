@@ -10,7 +10,7 @@ use SPHERE\Common\Frontend\Message\Repository\Danger;
 use SPHERE\Common\Frontend\Message\Repository\Success;
 use SPHERE\Common\Window\Redirect;
 use SPHERE\Common\Window\Stage;
-use SPHERE\System\Database\Binding\AbstractService;
+use SPHERE\System\Database\Extender\AbstractService;
 
 /**
  * Class Service

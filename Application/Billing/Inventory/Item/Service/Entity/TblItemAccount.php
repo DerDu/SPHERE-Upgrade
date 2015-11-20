@@ -8,14 +8,14 @@ use Doctrine\ORM\Mapping\Table;
 use SPHERE\Application\Billing\Accounting\Account\Account;
 use SPHERE\Application\Billing\Accounting\Account\Service\Entity\TblAccount;
 use SPHERE\Application\Billing\Inventory\Item\Item;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * @Entity
  * @Table(name="tblItemAccount")
  * @Cache(usage="NONSTRICT_READ_WRITE")
  */
-class TblItemAccount extends Element
+class TblItemAccount extends AbstractEntity
 {
 
     const ATTR_TBL_ITEM = 'tblItem';

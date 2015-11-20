@@ -6,14 +6,14 @@ use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\Table;
 use SPHERE\Application\Platform\Gatekeeper\Authorization\Access\Access;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * @Entity
  * @Table(name="tblPrivilegeRight")
  * @Cache(usage="READ_ONLY")
  */
-class TblPrivilegeRight extends Element
+class TblPrivilegeRight extends AbstractEntity
 {
 
     const ATTR_TBL_PRIVILEGE = 'tblPrivilege';

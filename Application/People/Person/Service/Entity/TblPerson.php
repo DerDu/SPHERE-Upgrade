@@ -6,14 +6,14 @@ use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\Table;
 use SPHERE\Application\People\Person\Person;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * @Entity
  * @Table(name="tblPerson")
  * @Cache(usage="NONSTRICT_READ_WRITE")
  */
-class TblPerson extends Element
+class TblPerson extends AbstractEntity
 {
 
     const ATTR_FIRST_NAME = 'FirstName';

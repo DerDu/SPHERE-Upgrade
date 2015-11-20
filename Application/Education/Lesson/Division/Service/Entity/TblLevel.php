@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\Table;
 use SPHERE\Application\Education\School\Type\Service\Entity\TblType;
 use SPHERE\Application\Education\School\Type\Type;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * e.g. 6
@@ -16,7 +16,7 @@ use SPHERE\System\Database\Fitting\Element;
  * @Table(name="tblLevel")
  * @Cache(usage="READ_ONLY")
  */
-class TblLevel extends Element
+class TblLevel extends AbstractEntity
 {
 
     const ATTR_NAME = 'Name';

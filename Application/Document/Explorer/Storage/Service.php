@@ -5,7 +5,7 @@ use SPHERE\Application\Document\Explorer\Storage\Service\Data;
 use SPHERE\Application\Document\Explorer\Storage\Service\Entity\TblDirectory;
 use SPHERE\Application\Document\Explorer\Storage\Service\Entity\TblFile;
 use SPHERE\Application\Document\Explorer\Storage\Service\Setup;
-use SPHERE\System\Database\Binding\AbstractService;
+use SPHERE\System\Database\Extender\AbstractService;
 
 /**
  * Class Service

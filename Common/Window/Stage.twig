@@ -1,0 +1,29 @@
+{% if( StageTitle is not empty or StageDescription is not empty ) %}
+<h3>{{ StageTitle }}
+    <small>{{ StageDescription }}</small>
+</h3>
+{% endif %}
+
+{% if StageMessage is not empty %}
+    <div class="row">
+        <div class="col-xs-12">
+            {{ StageMessage }}
+        </div>
+    </div>
+    <hr/>
+{% endif %}
+
+{% if StageMenu is not empty %}
+    <div class="row">
+        <div class="col-xs-12">
+            {#<div class="btn-group">#}
+            {% for Button in StageMenu %}
+                {{ Button }}
+            {% endfor %}
+            {#</div>#}
+        </div>
+    </div>
+    <br/>
+{% endif %}
+{{ StageContent }}
+

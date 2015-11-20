@@ -5,7 +5,7 @@ use SPHERE\Application\Platform\Gatekeeper\Authorization\Account\Service\Entity\
 use SPHERE\Application\Platform\Gatekeeper\Authorization\Consumer\Service\Entity\TblConsumer;
 use SPHERE\Application\Platform\System\Archive\Service\Entity\TblArchive;
 use SPHERE\System\Database\Binding\AbstractData;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * Class Data
@@ -51,7 +51,7 @@ class Data extends AbstractData
      * @param string           $DatabaseName
      * @param null|TblAccount  $tblAccount
      * @param null|TblConsumer $tblConsumer
-     * @param null|Element     $Entity
+     * @param null|AbstractEntity     $Entity
      * @param int              $Type
      *
      * @return false|TblArchive
@@ -60,7 +60,7 @@ class Data extends AbstractData
         $DatabaseName,
         TblAccount $tblAccount = null,
         TblConsumer $tblConsumer = null,
-        Element $Entity = null,
+        AbstractEntity $Entity = null,
         $Type = TblArchive::ARCHIVE_TYPE_CREATE
     ) {
 
@@ -87,11 +87,11 @@ class Data extends AbstractData
     }
 
     /**
-     * @param Element $Entity
+     * @param AbstractEntity $Entity
      *
      * @return array
      */
-    private function persistData(Element $Entity)
+    private function persistData(AbstractEntity $Entity)
     {
 
         $Data = array();
@@ -116,7 +116,7 @@ class Data extends AbstractData
     {
 
         foreach ((array)$Data as $Key => $Value) {
-            if ($Value instanceof Element) {
+            if ($Value instanceof AbstractEntity) {
                 $Data[$Key] = $this->persistData($Value);
             }
             if ($Value instanceof \DateTime) {

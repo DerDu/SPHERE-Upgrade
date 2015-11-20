@@ -7,14 +7,14 @@ use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\Table;
 use SPHERE\Application\Education\School\Type\Service\Entity\TblType;
 use SPHERE\Application\Education\School\Type\Type;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * @Entity
  * @Table(name="tblProspectReservation")
  * @Cache(usage="READ_ONLY")
  */
-class TblProspectReservation extends Element
+class TblProspectReservation extends AbstractEntity
 {
 
     /**

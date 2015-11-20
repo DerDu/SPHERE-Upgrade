@@ -8,14 +8,14 @@ use Doctrine\ORM\Mapping\Table;
 use SPHERE\Application\Platform\Gatekeeper\Authorization\Access\Access;
 use SPHERE\Application\Platform\Gatekeeper\Authorization\Access\Service\Entity\TblRole;
 use SPHERE\Application\Platform\Gatekeeper\Authorization\Account\Account;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * @Entity
  * @Table(name="tblAuthorization")
  * @Cache(usage="READ_ONLY")
  */
-class TblAuthorization extends Element
+class TblAuthorization extends AbstractEntity
 {
 
     const ATTR_TBL_ACCOUNT = 'tblAccount';

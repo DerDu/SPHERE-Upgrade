@@ -5,14 +5,14 @@ use Doctrine\ORM\Mapping\Cache;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\Table;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * @Entity
  * @Table(name="tblAccountType")
  * @Cache(usage="NONSTRICT_READ_WRITE")
  */
-class TblAccountType extends Element
+class TblAccountType extends AbstractEntity
 {
 
     const ATTR_TBL_ACCOUNT_TYPE = 'tblAccountType';

@@ -8,14 +8,14 @@ use Doctrine\ORM\Mapping\Table;
 use SPHERE\Application\Billing\Accounting\Banking\Banking;
 use SPHERE\Application\People\Person\Person;
 use SPHERE\Application\People\Person\Service\Entity\TblPerson;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * @Entity
  * @Table(name="tblDebtor")
  * @Cache(usage="NONSTRICT_READ_WRITE")
  */
-class TblDebtor extends Element
+class TblDebtor extends AbstractEntity
 {
 
     const ATTR_DEBTOR_NUMBER = 'DebtorNumber';

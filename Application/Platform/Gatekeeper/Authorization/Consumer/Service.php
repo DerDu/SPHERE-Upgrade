@@ -8,7 +8,7 @@ use SPHERE\Common\Frontend\Form\IFormInterface;
 use SPHERE\Common\Window\Redirect;
 use SPHERE\System\Cache\Cache;
 use SPHERE\System\Cache\Type\Memory;
-use SPHERE\System\Database\Binding\AbstractService;
+use SPHERE\System\Database\Extender\AbstractService;
 
 /**
  * Class Service

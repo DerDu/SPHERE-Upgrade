@@ -9,14 +9,14 @@ use SPHERE\Application\Billing\Accounting\Banking\Banking;
 use SPHERE\Application\Billing\Accounting\Banking\Service\Entity\TblDebtor;
 use SPHERE\Application\Billing\Bookkeeping\Invoice\Invoice;
 use SPHERE\Application\Billing\Bookkeeping\Invoice\Service\Entity\TblInvoice;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * @Entity
  * @Table(name="tblBalance")
  * @Cache(usage="NONSTRICT_READ_WRITE")
  */
-class TblBalance extends Element
+class TblBalance extends AbstractEntity
 {
 
     const ATTR_SERVICE_BILLING_BANKING = 'serviceBilling_Banking';

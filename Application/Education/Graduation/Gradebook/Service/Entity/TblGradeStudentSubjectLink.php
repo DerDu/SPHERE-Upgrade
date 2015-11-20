@@ -21,14 +21,14 @@ use SPHERE\Application\Education\Lesson\Term\Service\Entity\TblPeriod;
 use SPHERE\Application\Education\Lesson\Term\Term;
 use SPHERE\Application\People\Person\Person;
 use SPHERE\Application\People\Person\Service\Entity\TblPerson;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * @Entity()
  * @Table(name="tblGradeStudentSubjectLink")
  * @Cache(usage="NONSTRICT_READ_WRITE")
  */
-class TblGradeStudentSubjectLink extends Element
+class TblGradeStudentSubjectLink extends AbstractEntity
 {
 
     const ATTR_TBL_GRADE_TYPE = 'tblGradeType';

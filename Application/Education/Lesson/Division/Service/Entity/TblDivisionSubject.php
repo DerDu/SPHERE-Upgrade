@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping\Table;
 use SPHERE\Application\Education\Lesson\Division\Division;
 use SPHERE\Application\Education\Lesson\Subject\Service\Entity\TblSubject;
 use SPHERE\Application\Education\Lesson\Subject\Subject;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * e.g. 6 Alpha - Math
@@ -17,7 +17,7 @@ use SPHERE\System\Database\Fitting\Element;
  * @Table(name="tblDivisionSubject")
  * @Cache(usage="READ_ONLY")
  */
-class TblDivisionSubject extends Element
+class TblDivisionSubject extends AbstractEntity
 {
 
     /**

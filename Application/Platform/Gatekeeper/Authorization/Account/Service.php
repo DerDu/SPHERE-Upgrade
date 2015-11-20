@@ -17,7 +17,7 @@ use SPHERE\Application\Platform\Gatekeeper\Authorization\Token\Service\Entity\Tb
 use SPHERE\Application\Platform\Gatekeeper\Authorization\Token\Token;
 use SPHERE\Common\Frontend\Form\IFormInterface;
 use SPHERE\Common\Window\Redirect;
-use SPHERE\System\Database\Binding\AbstractService;
+use SPHERE\System\Database\Extender\AbstractService;
 
 /**
  * Class Service

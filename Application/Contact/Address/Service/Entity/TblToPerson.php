@@ -8,14 +8,14 @@ use Doctrine\ORM\Mapping\Table;
 use SPHERE\Application\Contact\Address\Address;
 use SPHERE\Application\People\Person\Person;
 use SPHERE\Application\People\Person\Service\Entity\TblPerson;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * @Entity
  * @Table(name="tblToPerson")
  * @Cache(usage="READ_ONLY")
  */
-class TblToPerson extends Element
+class TblToPerson extends AbstractEntity
 {
 
     const ATT_TBL_TYPE = 'tblType';

@@ -1,0 +1,50 @@
+{% for LayoutGroup in Layout %}
+    {% if( LayoutGroup.getLayoutTitle is not empty ) %}
+        {{ LayoutGroup.getLayoutTitle }}
+    {% endif %}
+    {% for LayoutRow in LayoutGroup.getLayoutRow %}
+        <div class="row{% if(LayoutRow.IsSortable) %} {{ LayoutRow.IsSortable }}{% endif %}">
+            {% for LayoutColumn in LayoutRow.getLayoutColumn %}
+                {% if( LayoutColumn.getSize is iterable ) %}
+                    {% set Column = "" %}
+                    {% for Index, Size in LayoutColumn.getSize %}
+                        {% if(Size != 0) %}
+                            {% if(Index == 0) %}
+                                {% set Column = Column ~ " col-xs-" ~ Size %}
+                            {% elseif(Index == 1) %}
+                                {% set Column = Column ~ " col-sm-" ~ Size %}
+                            {% elseif(Index == 2) %}
+                                {% set Column = Column ~ " col-md-" ~ Size %}
+                            {% elseif(Index == 3) %}
+                                {% set Column = Column ~ " col-lg-" ~ Size %}
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    {% set Column = "col-md-" ~ LayoutColumn.getSize %}
+                {% endif %}
+                <div class="{{ Column }} {{ LayoutColumn.getGridOption }}">
+                    {% for AbstractFrontend in LayoutColumn.getFrontend %}
+                        {{ AbstractFrontend }}
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+        {% if(LayoutRow.IsSortable) %}
+            <script>
+                Client.Use('ModSortable', function()
+                {
+                    jQuery('div.row.{{ LayoutRow.IsSortable }}').ModSortable({
+                        containment: "parent",
+                        cursor: "move",
+                        forceHelperSize: true,
+                        forcePlaceholderSize: true,
+                        opacity: 0.5,
+                        tolerance: "pointer",
+                        cursorAt: {left: 5}
+                    });
+                });
+            </script>
+        {% endif %}
+    {% endfor %}
+{% endfor %}

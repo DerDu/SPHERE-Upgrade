@@ -4,7 +4,7 @@ namespace SPHERE\Application\Education\School\Type;
 use SPHERE\Application\Education\School\Type\Service\Data;
 use SPHERE\Application\Education\School\Type\Service\Entity\TblType;
 use SPHERE\Application\Education\School\Type\Service\Setup;
-use SPHERE\System\Database\Binding\AbstractService;
+use SPHERE\System\Database\Extender\AbstractService;
 
 /**
  * Class Service

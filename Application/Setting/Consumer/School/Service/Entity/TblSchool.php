@@ -9,14 +9,14 @@ use SPHERE\Application\Corporation\Company\Company;
 use SPHERE\Application\Corporation\Company\Service\Entity\TblCompany;
 use SPHERE\Application\Education\School\Type\Service\Entity\TblType;
 use SPHERE\Application\Education\School\Type\Type;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * @Entity
  * @Table(name="tblSchool")
  * @Cache(usage="NONSTRICT_READ_WRITE")
  */
-class TblSchool extends Element
+class TblSchool extends AbstractEntity
 {
 
     const SERVICE_TBL_COMPANY = 'serviceTblCompany';

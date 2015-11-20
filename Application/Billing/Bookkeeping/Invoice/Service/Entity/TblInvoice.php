@@ -12,14 +12,14 @@ use SPHERE\Application\Contact\Address\Address;
 use SPHERE\Application\Contact\Address\Service\Entity\TblAddress;
 use SPHERE\Application\People\Person\Person;
 use SPHERE\Application\People\Person\Service\Entity\TblPerson;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * @Entity
  * @Table(name="tblInvoice")
  * @Cache(usage="NONSTRICT_READ_WRITE")
  */
-class TblInvoice extends Element
+class TblInvoice extends AbstractEntity
 {
 
     const ATTR_IS_PAID = 'IsPaid';

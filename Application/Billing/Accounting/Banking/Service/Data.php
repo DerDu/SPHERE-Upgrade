@@ -12,7 +12,7 @@ use SPHERE\Application\Billing\Inventory\Commodity\Service\Entity\TblCommodity;
 use SPHERE\Application\People\Person\Service\Entity\TblPerson;
 use SPHERE\Application\Platform\System\Protocol\Protocol;
 use SPHERE\System\Database\Binding\AbstractData;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 class Data extends AbstractData
 {
@@ -215,7 +215,7 @@ class Data extends AbstractData
                 'Id' => $tblDebtorCommodity->getId()
             ));
         if (null !== $Entity) {
-            /**@var Element $Entity */
+            /**@var AbstractEntity $Entity */
             Protocol::useService()->createDeleteEntry($this->getConnection()->getDatabase(),
                 $Entity);
             $Manager->killEntity($Entity);
@@ -296,7 +296,7 @@ class Data extends AbstractData
 
         $Entity = $Manager->getEntity('TblDebtor')->findOneBy(array('Id' => $tblDebtor->getId()));
         if (null !== $Entity) {
-            /**@var Element $Entity */
+            /**@var AbstractEntity $Entity */
             Protocol::useService()->createDeleteEntry($this->getConnection()->getDatabase(),
                 $Entity);
             $Manager->killEntity($Entity);
@@ -324,7 +324,7 @@ class Data extends AbstractData
 
         $Entity = $Manager->getEntityById('TblAccount', $tblAccount->getId());
         if (null !== $Entity) {
-            /**@var Element $Entity */
+            /**@var AbstractEntity $Entity */
             Protocol::useService()->createDeleteEntry($this->getConnection()->getDatabase(),
                 $Entity);
             $Manager->killEntity($Entity);

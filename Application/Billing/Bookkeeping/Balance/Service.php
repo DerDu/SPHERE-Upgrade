@@ -8,7 +8,7 @@ use SPHERE\Application\Billing\Bookkeeping\Balance\Service\Entity\TblBalance;
 use SPHERE\Application\Billing\Bookkeeping\Balance\Service\Entity\TblPayment;
 use SPHERE\Application\Billing\Bookkeeping\Balance\Service\Setup;
 use SPHERE\Application\Billing\Bookkeeping\Invoice\Service\Entity\TblInvoice;
-use SPHERE\System\Database\Binding\AbstractService;
+use SPHERE\System\Database\Extender\AbstractService;
 
 class Service extends AbstractService
 {

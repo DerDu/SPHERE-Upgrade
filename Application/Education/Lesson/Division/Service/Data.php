@@ -10,7 +10,7 @@ use SPHERE\Application\Education\School\Type\Service\Entity\TblType;
 use SPHERE\Application\People\Person\Service\Entity\TblPerson;
 use SPHERE\Application\Platform\System\Protocol\Protocol;
 use SPHERE\System\Database\Binding\AbstractData;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * Class Data
@@ -359,7 +359,7 @@ class Data extends AbstractData
         $Manager = $this->getConnection()->getEntityManager();
         $Entity = $Manager->getEntity('TblDivision')->findOneBy(array('Id' => $tblDivision->getId()));
         if (null !== $Entity) {
-            /** @var Element $Entity */
+            /** @var AbstractEntity $Entity */
             Protocol::useService()->createDeleteEntry($this->getConnection()->getDatabase(),
                 $Entity);
             $Manager->killEntity($Entity);
@@ -374,7 +374,7 @@ class Data extends AbstractData
         $Manager = $this->getConnection()->getEntityManager();
         $Entity = $Manager->getEntity('TblLevel')->findOneBy(array('Id' => $tblLevel->getId()));
         if (null !== $Entity) {
-            /** @var Element $Entity */
+            /** @var AbstractEntity $Entity */
             Protocol::useService()->createDeleteEntry($this->getConnection()->getDatabase(),
                 $Entity);
             $Manager->killEntity($Entity);

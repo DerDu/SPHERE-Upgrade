@@ -1,0 +1,55 @@
+<form {% if( Hash is not empty ) %}id="{{ Hash }}"{% endif %}
+      action="{{ FormAction }}{{ FormData }}{% if( Hash is not empty ) %}#{{ Hash }}{% endif %}"
+      method="post"
+      enctype="multipart/form-data"
+    >
+    {% for FormGroup in GridGroupList %}
+        {% if( FormGroup.getFormTitle is not empty ) %}
+            {{ FormGroup.getFormTitle }}
+        {% endif %}
+        {% for FormRow in FormGroup.getFormRow %}
+            <div class="row{% if(FormRow.IsSortable) %} {{ FormRow.IsSortable }}{% endif %}">
+                {% for FormColumn in FormRow.getFormColumn %}
+                    <div class="col-md-{{ FormColumn.Size }}">
+                        {% for GridElement in FormColumn.getFrontend %}
+                            {{ GridElement }}
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+            {% if(FormRow.IsSortable) %}
+            <script>
+                Client.Use('ModSortable', function()
+                {
+                    jQuery('div.row.{{ FormRow.IsSortable }}').ModSortable({
+                        containment: "parent",
+                        cursor: "move",
+                        forceHelperSize: true,
+                        forcePlaceholderSize: true,
+                        opacity: 0.5,
+                        tolerance: "pointer",
+                        cursorAt: {left: 5}
+                    });
+                });
+            </script>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+    {% if( FormButtonList|length > 0) %}
+        <div class="form-group">
+            <div class="btn-group">
+                {% for FormButton in FormButtonList %}
+                    {{ FormButton }}
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+</form>
+<script type="text/javascript">
+    Client.Use('ModForm', function()
+    {
+        {% if FormConfirm is not empty %}
+        jQuery("form#{{ Hash }}").ModForm({notifyChangedMessage: "{{ FormConfirm }}"});
+        {% endif %}
+    });
+</script>

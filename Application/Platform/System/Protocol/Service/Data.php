@@ -6,7 +6,7 @@ use SPHERE\Application\Platform\Gatekeeper\Authorization\Consumer\Service\Entity
 use SPHERE\Application\Platform\System\Protocol\Service\Entity\TblProtocol;
 use SPHERE\Common\Frontend\Message\Repository\Danger;
 use SPHERE\System\Database\Binding\AbstractData;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * Class Data
@@ -73,8 +73,8 @@ class Data extends AbstractData
      * @param string           $DatabaseName
      * @param null|TblAccount  $tblAccount
      * @param null|TblConsumer $tblConsumer
-     * @param null|Element     $FromEntity
-     * @param null|Element     $ToEntity
+     * @param null|AbstractEntity     $FromEntity
+     * @param null|AbstractEntity     $ToEntity
      *
      * @return false|TblProtocol
      */
@@ -82,8 +82,8 @@ class Data extends AbstractData
         $DatabaseName,
         TblAccount $tblAccount = null,
         TblConsumer $tblConsumer = null,
-        Element $FromEntity = null,
-        Element $ToEntity = null
+        AbstractEntity $FromEntity = null,
+        AbstractEntity $ToEntity = null
     ) {
 
         // Skip if nothing changed

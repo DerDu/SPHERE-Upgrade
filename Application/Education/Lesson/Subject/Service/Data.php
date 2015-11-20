@@ -8,7 +8,7 @@ use SPHERE\Application\Education\Lesson\Subject\Service\Entity\TblGroupCategory;
 use SPHERE\Application\Education\Lesson\Subject\Service\Entity\TblSubject;
 use SPHERE\Application\Platform\System\Protocol\Protocol;
 use SPHERE\System\Database\Binding\AbstractData;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * Class Data
@@ -386,7 +386,7 @@ class Data extends AbstractData
 
         $Entity = $Manager->getEntity('TblSubject')->findOneBy(array('Id' => $tblSubject->getId()));
         if (null !== $Entity) {
-            /** @var Element $Entity */
+            /** @var AbstractEntity $Entity */
             Protocol::useService()->createDeleteEntry($this->getConnection()->getDatabase(),
                 $Entity);
             $Manager->killEntity($Entity);
@@ -407,7 +407,7 @@ class Data extends AbstractData
 
         $Entity = $Manager->getEntity('TblCategory')->findOneBy(array('Id' => $tblCategory->getId()));
         if (null !== $Entity) {
-            /** @var Element $Entity */
+            /** @var AbstractEntity $Entity */
             Protocol::useService()->createDeleteEntry($this->getConnection()->getDatabase(),
                 $Entity);
             $Manager->killEntity($Entity);

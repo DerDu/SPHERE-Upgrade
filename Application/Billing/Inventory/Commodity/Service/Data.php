@@ -10,7 +10,7 @@ use SPHERE\Application\Billing\Inventory\Item\Item;
 use SPHERE\Application\Billing\Inventory\Item\Service\Entity\TblItem;
 use SPHERE\Application\Platform\System\Protocol\Protocol;
 use SPHERE\System\Database\Binding\AbstractData;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 class Data extends AbstractData
 {
@@ -317,7 +317,7 @@ class Data extends AbstractData
 
         $Entity = $Manager->getEntity('TblCommodityItem')->findOneBy(array('Id' => $tblCommodityItem->getId()));
         if (null !== $Entity) {
-            /** @var Element $Entity */
+            /** @var AbstractEntity $Entity */
             Protocol::useService()->createDeleteEntry($this->getConnection()->getDatabase(),
                 $Entity);
             $Manager->killEntity($Entity);
@@ -349,7 +349,7 @@ class Data extends AbstractData
 
         $Entity = $Manager->getEntity('TblCommodity')->findOneBy(array('Id' => $tblCommodity->getId()));
         if (null !== $Entity) {
-            /** @var Element $Entity */
+            /** @var AbstractEntity $Entity */
             Protocol::useService()->createDeleteEntry($this->getConnection()->getDatabase(),
                 $Entity);
             $Manager->killEntity($Entity);

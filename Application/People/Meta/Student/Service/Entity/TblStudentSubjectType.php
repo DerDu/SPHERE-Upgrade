@@ -5,14 +5,14 @@ use Doctrine\ORM\Mapping\Cache;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\Table;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * @Entity
  * @Table(name="tblStudentSubjectType")
  * @Cache(usage="READ_ONLY")
  */
-class TblStudentSubjectType extends Element
+class TblStudentSubjectType extends AbstractEntity
 {
 
     const ATTR_IDENTIFIER = 'Identifier';

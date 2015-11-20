@@ -8,14 +8,14 @@ use Doctrine\ORM\Mapping\Table;
 use SPHERE\Application\Contact\Phone\Phone;
 use SPHERE\Application\Corporation\Company\Company;
 use SPHERE\Application\Corporation\Company\Service\Entity\TblCompany;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * @Entity
  * @Table(name="tblToCompany")
  * @Cache(usage="READ_ONLY")
  */
-class TblToCompany extends Element
+class TblToCompany extends AbstractEntity
 {
 
     const ATT_TBL_TYPE = 'tblType';

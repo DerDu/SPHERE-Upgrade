@@ -6,14 +6,14 @@ use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\Table;
 use SPHERE\Application\Platform\Gatekeeper\Authorization\Access\Access;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * @Entity
  * @Table(name="tblLevel")
  * @Cache(usage="READ_ONLY")
  */
-class TblLevel extends Element
+class TblLevel extends AbstractEntity
 {
 
     const ATTR_NAME = 'Name';

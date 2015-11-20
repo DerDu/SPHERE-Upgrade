@@ -11,14 +11,14 @@ use SPHERE\Application\Billing\Accounting\Basket\Basket;
 use SPHERE\Application\Billing\Accounting\Basket\Service\Entity\TblBasket;
 use SPHERE\Application\People\Person\Person;
 use SPHERE\Application\People\Person\Service\Entity\TblPerson;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * @Entity
  * @Table(name="tblTempInvoice")
  * @Cache(usage="NONSTRICT_READ_WRITE")
  */
-class TblTempInvoice extends Element
+class TblTempInvoice extends AbstractEntity
 {
 
     const ATTR_SERVICE_BILLING_BASKET = 'serviceBilling_Basket';

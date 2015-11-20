@@ -1,6 +1,8 @@
 <?php
 namespace SPHERE\System\Database\Connection;
 
+use Doctrine\ORM\EntityManager;
+use MOC\V\Component\Database\Component\IBridgeInterface;
 use SPHERE\System\Config\Reader\ReaderInterface;
 use SPHERE\System\Database\DatabaseInterface;
 
@@ -18,9 +20,14 @@ interface ConnectionInterface extends DatabaseInterface
     public function setConfig($Name, ReaderInterface $Config = null);
 
     /**
-     * @return null|ConnectionInterface
+     * @return null|IBridgeInterface
      */
     public function getConnection();
 
-    public function createEntityManager($EntityPath, $EntityNamespace);
+    /**
+     * @param string $EntityNamespace
+     *
+     * @return EntityManager
+     */
+    public function createEntityManager($EntityNamespace);
 }

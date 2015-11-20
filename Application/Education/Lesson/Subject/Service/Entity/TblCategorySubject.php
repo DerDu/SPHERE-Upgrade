@@ -6,14 +6,14 @@ use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\Table;
 use SPHERE\Application\Education\Lesson\Subject\Subject;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * @Entity
  * @Table(name="tblCategorySubject")
  * @Cache(usage="READ_ONLY")
  */
-class TblCategorySubject extends Element
+class TblCategorySubject extends AbstractEntity
 {
 
     const ATTR_TBL_CATEGORY = 'tblCategory';

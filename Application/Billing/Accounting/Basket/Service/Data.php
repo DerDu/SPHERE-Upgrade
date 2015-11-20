@@ -19,7 +19,7 @@ use SPHERE\Application\People\Person\Service\Entity\TblPerson;
 use SPHERE\Application\People\Relationship\Relationship;
 use SPHERE\Application\Platform\System\Protocol\Protocol;
 use SPHERE\System\Database\Binding\AbstractData;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 class Data extends AbstractData
 {
@@ -555,7 +555,7 @@ class Data extends AbstractData
         foreach ($tblBasketItemAllByBasket as $tblBasketItem) {
             if ($tblBasketItem->getServiceBillingCommodityItem()->getTblCommodity()->getId() == $tblCommodity->getId()) {
                 $Entity = $Manager->getEntity('TblBasketItem')->findOneBy(array('Id' => $tblBasketItem->getId()));
-                /**@var Element $Entity */
+                /**@var AbstractEntity $Entity */
                 Protocol::useService()->createDeleteEntry($this->getConnection()->getDatabase(),
                     $Entity);
                 $Manager->bulkKillEntity($Entity);
@@ -582,7 +582,7 @@ class Data extends AbstractData
                 'Id' => $tblBasketItem->getId()
             ));
         if (null !== $Entity) {
-            /**@var Element $Entity */
+            /**@var AbstractEntity $Entity */
             Protocol::useService()->createDeleteEntry($this->getConnection()->getDatabase(),
                 $Entity);
             $Manager->killEntity($Entity);
@@ -666,7 +666,7 @@ class Data extends AbstractData
                 'Id' => $tblBasketPerson->getId()
             ));
         if (null !== $Entity) {
-            /**@var Element $Entity */
+            /**@var AbstractEntity $Entity */
             Protocol::useService()->createDeleteEntry($this->getConnection()->getDatabase(),
                 $Entity);
             $Manager->killEntity($Entity);
@@ -718,7 +718,7 @@ class Data extends AbstractData
             }
 
             $Entity = $Manager->getEntity('TblBasket')->findOneBy(array('Id' => $tblBasket->getId()));
-            /**@var Element $Entity */
+            /**@var AbstractEntity $Entity */
             Protocol::useService()->createDeleteEntry($this->getConnection()->getDatabase(),
                 $Entity);
             $Manager->bulkKillEntity($Entity);

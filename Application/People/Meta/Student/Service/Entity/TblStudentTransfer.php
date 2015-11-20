@@ -10,14 +10,14 @@ use SPHERE\Application\Corporation\Company\Service\Entity\TblCompany;
 use SPHERE\Application\Education\School\Type\Service\Entity\TblType;
 use SPHERE\Application\Education\School\Type\Type;
 use SPHERE\Application\People\Meta\Student\Student;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * @Entity
  * @Table(name="tblStudentTransfer")
  * @Cache(usage="READ_ONLY")
  */
-class TblStudentTransfer extends Element
+class TblStudentTransfer extends AbstractEntity
 {
 
     const ATTR_TBL_STUDENT = 'tblStudent';

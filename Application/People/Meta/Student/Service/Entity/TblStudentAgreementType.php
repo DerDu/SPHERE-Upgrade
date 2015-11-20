@@ -6,14 +6,14 @@ use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\Table;
 use SPHERE\Application\People\Meta\Student\Student;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * @Entity
  * @Table(name="tblStudentAgreementType")
  * @Cache(usage="READ_ONLY")
  */
-class TblStudentAgreementType extends Element
+class TblStudentAgreementType extends AbstractEntity
 {
 
     const ATTR_NAME = 'Name';

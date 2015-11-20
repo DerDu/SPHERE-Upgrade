@@ -15,7 +15,7 @@ ini_set('memory_limit', '1024M');
 /**
  * Setup: Loader
  */
-require_once(__DIR__ . '/Library/MOC-V/Core/AutoLoader/AutoLoader.php');
+require_once( __DIR__.'/Library/MOC-V/Core/AutoLoader/AutoLoader.php' );
 
 use MOC\V\Core\AutoLoader\AutoLoader;
 use SPHERE\System\Cache\CacheFactory;
@@ -31,15 +31,15 @@ use SPHERE\System\Debugger\DebuggerFactory;
 use SPHERE\System\Debugger\Logger\BenchmarkLogger;
 use SPHERE\System\Debugger\Logger\ErrorLogger;
 
-AutoLoader::getNamespaceAutoLoader('MOC\V', __DIR__ . '/Library/MOC-V');
-AutoLoader::getNamespaceAutoLoader('SPHERE', __DIR__ . '/', 'SPHERE');
+AutoLoader::getNamespaceAutoLoader('MOC\V', __DIR__.'/Library/MOC-V');
+AutoLoader::getNamespaceAutoLoader('SPHERE', __DIR__.'/', 'SPHERE');
 
 print '<pre>';
 
 $Value = null;
 
 $Logger = (new DebuggerFactory())->createLogger();
-/*
+
 $Reader = (new ConfigFactory())->createReader(__DIR__ . '/System/Cache.ini');
 
 $Handler = (new CacheFactory())->createHandler(new MemoryHandler());
@@ -73,21 +73,26 @@ $Handler->clearCache();
 
 $Handler = (new CacheFactory())->createHandler(new TwigHandler(), $Reader);
 $Handler->clearCache();
-*/
-$Reader = (new ConfigFactory())->createReader(__DIR__ . '/System/Database/Database.ini');
+
+$Reader = (new ConfigFactory())->createReader(__DIR__.'/System/Database/Database.ini');
 
 $Connection = (new DatabaseFactory())->createConnection('Platform:System:Test', $Reader);
 $Connection = (new DatabaseFactory())->createConnection('Platform:System:Protocol', $Reader);
 $Connection = (new DatabaseFactory())->createConnection('Platform:Gatekeeper:Authorization:Consumer', $Reader);
 
-var_dump( $Connection->createEntityManager(
-    '/Application/Platform/Gatekeeper/Authorization/Consumer/Service/Entity',
-    'SPHERE\Application\Platform\Gatekeeper\Authorization\Consumer\Service\Entity'
-) );
+var_dump($Connection->createEntityManager(
+    '\SPHERE\Application\Platform\Gatekeeper\Authorization\Consumer\Service\Entity'
+));
 
 $Connection = (new DatabaseFactory())->createConnection('Platform:Gatekeeper:Authorization:Token', $Reader);
+
 $Connection = (new DatabaseFactory())->createConnection('Platform:Gatekeeper:Authorization:Account', $Reader);
+
 $Connection = (new DatabaseFactory())->createConnection('Platform:Gatekeeper:Authorization:Access', $Reader);
 
-echo implode("\n", (new DebuggerFactory())->createLogger(new BenchmarkLogger())->getLog());
-echo implode("\n", (new DebuggerFactory())->createLogger(new ErrorLogger())->getLog());
+
+echo implode("\n", array(
+    implode("\n", (new DebuggerFactory())->createLogger(new BenchmarkLogger())->getLog()),
+    implode("\n", (new DebuggerFactory())->createLogger(new ErrorLogger())->getLog()),
+));
+

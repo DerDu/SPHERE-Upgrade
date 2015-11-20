@@ -6,14 +6,14 @@ use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\Table;
 use SPHERE\Application\Education\Lesson\Term\Term;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * @Entity
  * @Table(name="tblYearPeriod")
  * @Cache(usage="READ_ONLY")
  */
-class TblYearPeriod extends Element
+class TblYearPeriod extends AbstractEntity
 {
 
     const ATTR_TBL_YEAR = 'tblYear';

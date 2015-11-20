@@ -1,0 +1,15 @@
+{% if( ElementIcon is not empty ) %}
+<div class="form-group {{ ElementGroup }}">
+    {% endif %}
+    <div class="checkbox checkbox-primary">
+        <input id="{{ ElementHash }}" type="checkbox" name="{{ ElementName }}"
+               value="{{ ElementValue }}" {{ ElementChecked }}/>
+        {% if( ElementLabel is not empty ) %}
+            <label class="sphere-label" for="{{ ElementHash }}">{{ ElementLabel }}</label>
+        {% endif %}
+        {{ ElementFeedbackIcon }}
+    </div>
+    {% if( ElementIcon is not empty ) %}
+    {{ ElementFeedbackMessage }}
+</div>
+{% endif %}

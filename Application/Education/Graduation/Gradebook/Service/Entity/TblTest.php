@@ -19,14 +19,14 @@ use SPHERE\Application\Education\Lesson\Subject\Service\Entity\TblSubject;
 use SPHERE\Application\Education\Lesson\Subject\Subject;
 use SPHERE\Application\Education\Lesson\Term\Service\Entity\TblPeriod;
 use SPHERE\Application\Education\Lesson\Term\Term;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * @Entity()
  * @Table(name="tblTest")
  * @Cache(usage="NONSTRICT_READ_WRITE")
  */
-class TblTest extends Element
+class TblTest extends AbstractEntity
 {
     const ATTR_DATE = 'Date';
     const ATTR_CORRECTION_DATE = 'CorrectionDate';

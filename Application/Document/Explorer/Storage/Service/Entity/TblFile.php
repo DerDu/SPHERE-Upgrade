@@ -6,14 +6,14 @@ use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\Table;
 use SPHERE\Application\Document\Explorer\Storage\Storage;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * @Entity()
  * @Table(name="tblFile")
  * @Cache(usage="READ_ONLY")
  */
-class TblFile extends Element
+class TblFile extends AbstractEntity
 {
 
     const ATTR_NAME = 'Name';

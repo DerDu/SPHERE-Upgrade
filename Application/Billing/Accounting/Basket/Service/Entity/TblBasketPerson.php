@@ -8,14 +8,14 @@ use Doctrine\ORM\Mapping\Table;
 use SPHERE\Application\Billing\Accounting\Basket\Basket;
 use SPHERE\Application\People\Person\Person;
 use SPHERE\Application\People\Person\Service\Entity\TblPerson;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * @Entity
  * @Table(name="tblBasketPerson")
  * @Cache(usage="NONSTRICT_READ_WRITE")
  */
-class TblBasketPerson extends Element
+class TblBasketPerson extends AbstractEntity
 {
 
     const ATTR_TBL_BASKET = 'tblBasket';

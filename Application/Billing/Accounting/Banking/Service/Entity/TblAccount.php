@@ -6,14 +6,14 @@ use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\Table;
 use SPHERE\Application\Billing\Accounting\Banking\Banking;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * @Entity
  * @Table(name="tblAccount")
  * @Cache(usage="NONSTRICT_READ_WRITE")
  */
-class TblAccount extends Element
+class TblAccount extends AbstractEntity
 {
 
     const ATTR_TBL_DEBTOR = 'tblDebtor';

@@ -8,14 +8,14 @@ use Doctrine\ORM\Mapping\Table;
 use SPHERE\Application\Billing\Bookkeeping\Invoice\Invoice;
 use SPHERE\Application\Billing\Inventory\Commodity\Commodity;
 use SPHERE\Application\Billing\Inventory\Commodity\Service\Entity\TblCommodity;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * @Entity
  * @Table(name="tblTempInvoiceCommodity")
  * @Cache(usage="NONSTRICT_READ_WRITE")
  */
-class TblTempInvoiceCommodity extends Element
+class TblTempInvoiceCommodity extends AbstractEntity
 {
 
     const ATTR_TBL_TEMP_INVOICE = 'tblTempInvoice';

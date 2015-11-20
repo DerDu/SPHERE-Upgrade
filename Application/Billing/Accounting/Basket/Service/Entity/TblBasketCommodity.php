@@ -10,14 +10,14 @@ use SPHERE\Application\Billing\Inventory\Commodity\Commodity;
 use SPHERE\Application\Billing\Inventory\Commodity\Service\Entity\TblCommodity;
 use SPHERE\Application\People\Person\Person;
 use SPHERE\Application\People\Person\Service\Entity\TblPerson;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * @Entity
  * @Table(name="tblBasketCommodity")
  * @Cache(usage="NONSTRICT_READ_WRITE")
  */
-class TblBasketCommodity extends Element
+class TblBasketCommodity extends AbstractEntity
 {
 
     const ATTR_TBL_BASKET = 'tblBasket';

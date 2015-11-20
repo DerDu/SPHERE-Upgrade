@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping\Table;
 use SPHERE\Application\Education\Lesson\Division\Division;
 use SPHERE\Application\People\Person\Person;
 use SPHERE\Application\People\Person\Service\Entity\TblPerson;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * e.g. 6 Alpha - Teacher
@@ -17,7 +17,7 @@ use SPHERE\System\Database\Fitting\Element;
  * @Table(name="tblDivisionTeacher")
  * @Cache(usage="READ_ONLY")
  */
-class TblDivisionTeacher extends Element
+class TblDivisionTeacher extends AbstractEntity
 {
 
     const ATTR_TBL_DIVISION = 'tblDivision';

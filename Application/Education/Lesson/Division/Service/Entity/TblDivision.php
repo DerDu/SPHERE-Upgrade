@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping\Table;
 use SPHERE\Application\Education\Lesson\Division\Division;
 use SPHERE\Application\Education\Lesson\Term\Service\Entity\TblYear;
 use SPHERE\Application\Education\Lesson\Term\Term;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * e.g. 6 Alpha
@@ -17,7 +17,7 @@ use SPHERE\System\Database\Fitting\Element;
  * @Table(name="tblDivision")
  * @Cache(usage="READ_ONLY")
  */
-class TblDivision extends Element
+class TblDivision extends AbstractEntity
 {
 
     const ATTR_NAME = 'Name';

@@ -7,14 +7,14 @@ use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\Table;
 use SPHERE\Application\Corporation\Group\Group;
 use SPHERE\Application\Corporation\Group\Service\Entity\TblGroup;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * @Entity
  * @Table(name="tblCompany")
  * @Cache(usage="NONSTRICT_READ_WRITE")
  */
-class TblCompany extends Element
+class TblCompany extends AbstractEntity
 {
 
     /**

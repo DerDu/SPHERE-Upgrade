@@ -8,14 +8,14 @@ use Doctrine\ORM\Mapping\Table;
 use SPHERE\Application\People\Person\Person;
 use SPHERE\Application\People\Person\Service\Entity\TblPerson;
 use SPHERE\Application\Platform\Gatekeeper\Authorization\Account\Account;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * @Entity
  * @Table(name="tblUser")
  * @Cache(usage="NONSTRICT_READ_WRITE")
  */
-class TblUser extends Element
+class TblUser extends AbstractEntity
 {
 
     const ATTR_TBL_ACCOUNT = 'tblAccount';

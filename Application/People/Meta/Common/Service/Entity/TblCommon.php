@@ -8,14 +8,14 @@ use Doctrine\ORM\Mapping\Table;
 use SPHERE\Application\People\Meta\Common\Common;
 use SPHERE\Application\People\Person\Person;
 use SPHERE\Application\People\Person\Service\Entity\TblPerson;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * @Entity
  * @Table(name="tblCommon")
  * @Cache(usage="READ_ONLY")
  */
-class TblCommon extends Element
+class TblCommon extends AbstractEntity
 {
 
     const SERVICE_TBL_PERSON = 'serviceTblPerson';

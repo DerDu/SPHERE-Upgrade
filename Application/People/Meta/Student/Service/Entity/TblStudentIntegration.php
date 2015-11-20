@@ -9,14 +9,14 @@ use SPHERE\Application\Corporation\Company\Company;
 use SPHERE\Application\Corporation\Company\Service\Entity\TblCompany;
 use SPHERE\Application\People\Meta\Student\Student;
 use SPHERE\Application\People\Person\Service\Entity\TblPerson;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * @Entity
  * @Table(name="tblStudentIntegration")
  * @Cache(usage="READ_ONLY")
  */
-class TblStudentIntegration extends Element
+class TblStudentIntegration extends AbstractEntity
 {
 
     /**

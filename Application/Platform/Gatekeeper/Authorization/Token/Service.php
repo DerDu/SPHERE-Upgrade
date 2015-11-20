@@ -7,7 +7,7 @@ use SPHERE\Application\Platform\Gatekeeper\Authorization\Token\Service\Entity\Tb
 use SPHERE\Application\Platform\Gatekeeper\Authorization\Token\Service\Setup;
 use SPHERE\Common\Frontend\Form\IFormInterface;
 use SPHERE\Common\Window\Redirect;
-use SPHERE\System\Database\Binding\AbstractService;
+use SPHERE\System\Database\Extender\AbstractService;
 use SPHERE\System\Token\Token as HardwareToken;
 use SPHERE\System\Token\Type\YubiKey;
 use SPHERE\System\Token\YubiKey\BadOTPException;

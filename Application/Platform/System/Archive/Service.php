@@ -7,8 +7,8 @@ use SPHERE\Application\Platform\System\Archive\Service\Data;
 use SPHERE\Application\Platform\System\Archive\Service\Entity\TblArchive;
 use SPHERE\Application\Platform\System\Archive\Service\Setup;
 use SPHERE\Common\Frontend\Message\Repository\Danger;
-use SPHERE\System\Database\Binding\AbstractService;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractService;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * Class Service
@@ -34,7 +34,7 @@ class Service extends AbstractService
      * @param string           $DatabaseName
      * @param null|TblAccount  $tblAccount
      * @param null|TblConsumer $tblConsumer
-     * @param null|Element     $Entity
+     * @param null|AbstractEntity     $Entity
      * @param int              $Type
      *
      * @return false|TblArchive
@@ -43,7 +43,7 @@ class Service extends AbstractService
         $DatabaseName,
         TblAccount $tblAccount = null,
         TblConsumer $tblConsumer = null,
-        Element $Entity = null,
+        AbstractEntity $Entity = null,
         $Type = TblArchive::ARCHIVE_TYPE_CREATE
     ) {
 

@@ -10,14 +10,14 @@ use SPHERE\Application\Corporation\Company\Service\Entity\TblCompany;
 use SPHERE\Application\People\Person\Person;
 use SPHERE\Application\People\Person\Service\Entity\TblPerson;
 use SPHERE\Application\People\Relationship\Relationship;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * @Entity
  * @Table(name="tblToCompany")
  * @Cache(usage="READ_ONLY")
  */
-class TblToCompany extends Element
+class TblToCompany extends AbstractEntity
 {
 
     const ATT_TBL_TYPE = 'tblType';

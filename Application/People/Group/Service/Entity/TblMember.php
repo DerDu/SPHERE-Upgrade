@@ -8,14 +8,14 @@ use Doctrine\ORM\Mapping\Table;
 use SPHERE\Application\People\Group\Group;
 use SPHERE\Application\People\Person\Person;
 use SPHERE\Application\People\Person\Service\Entity\TblPerson;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * @Entity
  * @Table(name="tblMember")
  * @Cache(usage="NONSTRICT_READ_WRITE")
  */
-class TblMember extends Element
+class TblMember extends AbstractEntity
 {
 
     const ATTR_TBL_GROUP = 'tblGroup';

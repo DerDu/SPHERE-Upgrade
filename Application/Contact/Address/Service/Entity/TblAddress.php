@@ -7,14 +7,14 @@ use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\Table;
 use SPHERE\Application\Contact\Address\Address;
 use SPHERE\Common\Frontend\Layout\Repository\Address as LayoutAddress;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * @Entity()
  * @Table(name="tblAddress")
  * @Cache(usage="READ_ONLY")
  */
-class TblAddress extends Element
+class TblAddress extends AbstractEntity
 {
 
     const ATTR_STREET_NAME = 'StreetName';

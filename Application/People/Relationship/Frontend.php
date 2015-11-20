@@ -43,7 +43,7 @@ use SPHERE\Common\Frontend\Text\Repository\Muted;
 use SPHERE\Common\Frontend\Text\Repository\Small;
 use SPHERE\Common\Window\Redirect;
 use SPHERE\Common\Window\Stage;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 use SPHERE\System\Extension\Extension;
 
 /**
@@ -474,11 +474,11 @@ class Frontend extends Extension implements IFrontendInterface
     }
 
     /**
-     * @param TblCompany|TblPerson|Element $tblEntity
+     * @param TblCompany|TblPerson|AbstractEntity $tblEntity
      *
      * @return Layout
      */
-    public function frontendLayoutCompany(Element $tblEntity)
+    public function frontendLayoutCompany(AbstractEntity $tblEntity)
     {
 
         if ($tblEntity instanceof TblPerson) {
@@ -493,7 +493,7 @@ class Frontend extends Extension implements IFrontendInterface
 
         if ($tblRelationshipAll !== false) {
             /** @noinspection PhpUnusedParameterInspection */
-            array_walk($tblRelationshipAll, function (TblToCompany &$tblToCompany, $Index, Element $tblEntity) {
+            array_walk($tblRelationshipAll, function (TblToCompany &$tblToCompany, $Index, AbstractEntity $tblEntity) {
 
                 $Panel = array(
                     $tblToCompany->getServiceTblPerson()->getFullName(),

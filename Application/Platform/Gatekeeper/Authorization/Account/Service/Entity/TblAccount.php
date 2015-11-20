@@ -10,14 +10,14 @@ use SPHERE\Application\Platform\Gatekeeper\Authorization\Consumer\Consumer;
 use SPHERE\Application\Platform\Gatekeeper\Authorization\Consumer\Service\Entity\TblConsumer;
 use SPHERE\Application\Platform\Gatekeeper\Authorization\Token\Service\Entity\TblToken;
 use SPHERE\Application\Platform\Gatekeeper\Authorization\Token\Token;
-use SPHERE\System\Database\Fitting\Element;
+use SPHERE\System\Database\Extender\AbstractEntity;
 
 /**
  * @Entity
  * @Table(name="tblAccount")
  * @Cache(usage="READ_ONLY")
  */
-class TblAccount extends Element
+class TblAccount extends AbstractEntity
 {
 
     const ATTR_USERNAME = 'Username';
