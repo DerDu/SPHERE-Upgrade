@@ -1,6 +1,8 @@
 <?php
 namespace SPHERE\System\Config;
 
+use SPHERE\System\Config\Loader\ArrayLoader;
+use SPHERE\System\Config\Loader\LoaderInterface;
 use SPHERE\System\Config\Reader\IniReader;
 use SPHERE\System\Config\Reader\ReaderInterface;
 use SPHERE\System\Debugger\DebuggerFactory;
@@ -10,7 +12,7 @@ use SPHERE\System\Debugger\Logger\ErrorLogger;
  * Class ConfigFactory
  * @package SPHERE\System\Config
  */
-class ConfigFactory
+class ConfigFactory implements ConfigInterface
 {
 
     /**
@@ -43,6 +45,23 @@ class ConfigFactory
     }
 
     /**
+     * @param mixed $Mixed
+     * @param LoaderInterface $Loader
+     * @return LoaderInterface
+     */
+    public function createLoader($Mixed, LoaderInterface $Loader = null)
+    {
+        if (null === $Loader) {
+            $Loader = new ArrayLoader();
+        }
+            if (!$this->isAvailable($Mixed)) {
+                (new DebuggerFactory())->createLogger()->addLog(__METHOD__ . ': ' . json_encode($Mixed));
+                $this->setLoader($Loader, $Mixed);
+            }
+            return $this->getLoader($Mixed);
+    }
+
+    /**
      * @param string $File
      * @return bool
      */
@@ -52,12 +71,12 @@ class ConfigFactory
     }
 
     /**
-     * @param string $File
+     * @param mixed $Mixed
      * @return string
      */
-    private function getHash($File)
+    private function getHash($Mixed)
     {
-        return sha1($File);
+        return sha1(serialize($Mixed));
     }
 
     /**
@@ -76,5 +95,23 @@ class ConfigFactory
     private function getReader($File)
     {
         return self::$InstanceCache[$this->getHash($File)];
+    }
+
+    /**
+     * @param LoaderInterface $Loader
+     * @param mixed $Mixed
+     */
+    private function setLoader(LoaderInterface $Loader, $Mixed)
+    {
+        self::$InstanceCache[$this->getHash($Mixed)] = $Loader->setConfig($Mixed);
+    }
+
+    /**
+     * @param mixed $Mixed
+     * @return LoaderInterface
+     */
+    private function getLoader($Mixed)
+    {
+        return self::$InstanceCache[$this->getHash($Mixed)];
     }
 }

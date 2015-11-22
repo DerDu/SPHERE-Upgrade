@@ -28,8 +28,8 @@ class MemcachedHandler extends AbstractHandler implements HandlerInterface
         ) {
             $Value = $Config->getValue($Name);
             if ($Value) {
-                $Host = $Value->getValue('Host');
-                $Port = $Value->getValue('Port');
+                $Host = $Value->getContainer('Host');
+                $Port = $Value->getContainer('Port');
                 if ($Host && $Port) {
                     $this->Connection = new \Memcached();
                     if ($this->Connection->addServer((string)$Host, (string)$Port)) {

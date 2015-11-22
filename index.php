@@ -18,6 +18,9 @@ ini_set('memory_limit', '1024M');
 require_once( __DIR__.'/Library/MOC-V/Core/AutoLoader/AutoLoader.php' );
 
 use MOC\V\Core\AutoLoader\AutoLoader;
+use SPHERE\System\Authenticator\AuthenticatorFactory;
+use SPHERE\System\Authenticator\Handler\GetHandler;
+use SPHERE\System\Authenticator\Handler\PostHandler;
 use SPHERE\System\Cache\CacheFactory;
 use SPHERE\System\Cache\Handler\APCuHandler;
 use SPHERE\System\Cache\Handler\MemcachedHandler;
@@ -30,6 +33,7 @@ use SPHERE\System\Database\DatabaseFactory;
 use SPHERE\System\Debugger\DebuggerFactory;
 use SPHERE\System\Debugger\Logger\BenchmarkLogger;
 use SPHERE\System\Debugger\Logger\ErrorLogger;
+use SPHERE\System\Globals\GlobalsFactory;
 
 AutoLoader::getNamespaceAutoLoader('MOC\V', __DIR__.'/Library/MOC-V');
 AutoLoader::getNamespaceAutoLoader('SPHERE', __DIR__.'/', 'SPHERE');
@@ -40,49 +44,11 @@ $Value = null;
 
 $Logger = (new DebuggerFactory())->createLogger();
 
-$Reader = (new ConfigFactory())->createReader(__DIR__ . '/System/Cache.ini');
-
-$Handler = (new CacheFactory())->createHandler(new MemoryHandler());
-
-$Handler->clearCache();
-$Logger->addLog('Set Value (Cache): Test');
-$Value = $Handler->setValue('Test', '456');
-
-$Logger->addLog('Get Value (Cache): Test');
-$Value = $Handler->getValue('Test');
-$Logger->addLog($Value);
-
-$Handler = (new CacheFactory())->createHandler(new MemcachedHandler(), $Reader);
-$Handler->clearCache();
-
-$Logger->addLog('Set Value (Cache): Test');
-$Value = $Handler->setValue('Test', '456');
-
-$Logger->addLog('Get Value (Cache): Test');
-$Value = $Handler->getValue('Test');
-$Logger->addLog($Value);
-
-$Handler = (new CacheFactory())->createHandler(new OpCacheHandler(), $Reader);
-$Handler->clearCache();
-
-$Handler = (new CacheFactory())->createHandler(new APCuHandler(), $Reader);
-$Handler->clearCache();
-
-$Handler = (new CacheFactory())->createHandler(new SmartyHandler(), $Reader);
-$Handler->clearCache();
-
-$Handler = (new CacheFactory())->createHandler(new TwigHandler(), $Reader);
-$Handler->clearCache();
-
 $Reader = (new ConfigFactory())->createReader(__DIR__.'/System/Database/Database.ini');
 
 $Connection = (new DatabaseFactory())->createConnection('Platform:System:Test', $Reader);
 $Connection = (new DatabaseFactory())->createConnection('Platform:System:Protocol', $Reader);
 $Connection = (new DatabaseFactory())->createConnection('Platform:Gatekeeper:Authorization:Consumer', $Reader);
-
-var_dump($Connection->createEntityManager(
-    '\SPHERE\Application\Platform\Gatekeeper\Authorization\Consumer\Service\Entity'
-));
 
 $Connection = (new DatabaseFactory())->createConnection('Platform:Gatekeeper:Authorization:Token', $Reader);
 
@@ -90,6 +56,10 @@ $Connection = (new DatabaseFactory())->createConnection('Platform:Gatekeeper:Aut
 
 $Connection = (new DatabaseFactory())->createConnection('Platform:Gatekeeper:Authorization:Access', $Reader);
 
+$Global = (new GlobalsFactory())->createHandler( new \SPHERE\System\Globals\Handler\GetHandler() );
+var_dump( $Global );
+$Global = (new GlobalsFactory())->createHandler( new \SPHERE\System\Globals\Handler\PostHandler() );
+var_dump( $Global );
 
 echo implode("\n", array(
     implode("\n", (new DebuggerFactory())->createLogger(new BenchmarkLogger())->getLog()),

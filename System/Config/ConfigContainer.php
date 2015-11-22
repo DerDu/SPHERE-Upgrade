@@ -5,7 +5,7 @@ namespace SPHERE\System\Config;
  * Class ConfigContainer
  * @package SPHERE\System\Config
  */
-class ConfigContainer
+class ConfigContainer implements ConfigInterface
 {
     /** @var null|ConfigContainer|mixed $Value */
     private $Value = null;
@@ -28,12 +28,32 @@ class ConfigContainer
      * @param string $Key
      * @return null|ConfigContainer|mixed
      */
-    public function getValue($Key)
+    public function getContainer($Key)
     {
         if (isset($this->Value[$Key])) {
             return $this->Value[$Key];
         }
         return null;
+    }
+
+    /**
+     * @param string $Key
+     * @param null|ConfigContainer|mixed $Value
+     * @return ConfigContainer
+     */
+    public function setContainer($Key,$Value)
+    {
+        if( $Value instanceof ConfigContainer ) {
+            $this->Value[$Key] = $Value;
+        } else {
+            $this->Value[$Key] = new ConfigContainer($Value);
+        }
+        return $this;
+    }
+
+    public function getValue()
+    {
+        return $this->Value;
     }
 
     /**

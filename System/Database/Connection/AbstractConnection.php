@@ -47,13 +47,13 @@ abstract class AbstractConnection implements ConnectionInterface
         ) {
             $Value = $Config->getValue($Name);
             if ($Value) {
-                $Driver = $Value->getValue('Driver');
-                $Host = $Value->getValue('Host');
-                $Port = $Value->getValue('Port');
-                $Timeout = $Value->getValue('Timeout');
-                $Username = $Value->getValue('Username');
-                $Password = $Value->getValue('Password');
-                $Consumer = $Value->getValue('Consumer');
+                $Driver = $Value->getContainer('Driver');
+                $Host = $Value->getContainer('Host');
+                $Port = $Value->getContainer('Port');
+                $Timeout = $Value->getContainer('Timeout');
+                $Username = $Value->getContainer('Username');
+                $Password = $Value->getContainer('Password');
+                $Consumer = $Value->getContainer('Consumer');
 
                 if ($Driver) {
                     $Driver = $this->fetchDriver($Driver);

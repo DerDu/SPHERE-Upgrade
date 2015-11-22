@@ -1,13 +1,13 @@
 <?php
-namespace SPHERE\System\Config\Reader;
+namespace SPHERE\System\Config\Loader;
 
 use SPHERE\System\Config\ConfigContainer;
 
 /**
- * Class AbstractReader
- * @package SPHERE\System\Config\Reader
+ * Class AbstractLoader
+ * @package SPHERE\System\Config\Loader
  */
-abstract class AbstractReader implements ReaderInterface
+abstract class AbstractLoader implements LoaderInterface
 {
 
     /** @var ConfigContainer $Registry */
@@ -20,5 +20,13 @@ abstract class AbstractReader implements ReaderInterface
     public function getValue($Key)
     {
         return $this->Registry->getContainer($Key);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConfig()
+    {
+        return $this->Registry;
     }
 }
