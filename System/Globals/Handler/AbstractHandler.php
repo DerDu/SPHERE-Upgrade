@@ -2,7 +2,7 @@
 namespace SPHERE\System\Globals\Handler;
 
 use SPHERE\System\Config\ConfigContainer;
-use SPHERE\System\Config\Loader\LoaderInterface;
+use SPHERE\System\Config\Reader\ReaderInterface;
 
 /**
  * Class AbstractHandler
@@ -14,10 +14,10 @@ abstract class AbstractHandler implements HandlerInterface
     protected $Global = array();
 
     /**
-     * @param LoaderInterface|null $Config
+     * @param ReaderInterface|null $Config
      * @return mixed
      */
-    public function setConfig(LoaderInterface $Config = null)
+    public function setConfig(ReaderInterface $Config = null)
     {
         $this->Global = $Config->getConfig();
     }
@@ -37,13 +37,17 @@ abstract class AbstractHandler implements HandlerInterface
     public function getValue($Key)
     {
         $Key = explode('.', $Key);
-        $Value = $this->Global;
-        array_walk($Key, function ($Key) use (&$Value) {
-            if ($Value) {
-                $Value = $Value->getContainer($Key);
+        $Container = $this->Global;
+        array_walk($Key, function ($Key) use (&$Container) {
+            if ($Container) {
+                $Container = $Container->getContainer($Key);
             }
         });
-        return $Value;
+        if( $Container instanceof ConfigContainer ) {
+            return $Container->getValue();
+        } else {
+            return $Container;
+        }
     }
 
     /**
@@ -56,14 +60,19 @@ abstract class AbstractHandler implements HandlerInterface
 
         $KeyList = explode('.', $Key);
         $Container = $this->Global;
-        $Target = (count($KeyList) - 1);
-
-        foreach ((array)$KeyList as $Index => $Key) {
-
+        foreach( (array)$KeyList as $Key ) {
+            if ($Container instanceof ConfigContainer) {
+                if( null === $Container->getContainer($Key) ) {
+                    var_dump( 'New '.$Key );
+                    $Container->setContainer( $Key, new ConfigContainer(null) );
+                }
+                var_dump( 'Load '.$Key );
+                $Container = $Container->getContainer($Key);
+                var_dump( $Container );
+            }
         }
-
-        var_dump($this->Global);
-
+        arsort
+        var_dump( $this->Global );
         return $this;
     }
 }

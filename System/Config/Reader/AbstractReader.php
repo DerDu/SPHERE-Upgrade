@@ -21,4 +21,12 @@ abstract class AbstractReader implements ReaderInterface
     {
         return $this->Registry->getContainer($Key);
     }
+
+    /**
+     * @return mixed
+     */
+    public function getConfig()
+    {
+        return $this->Registry;
+    }
 }

@@ -1,24 +1,33 @@
 <?php
 namespace SPHERE\System\Config\Reader;
 
-use SPHERE\System\Config\ConfigInterface;
 use SPHERE\System\Config\ConfigContainer;
+use SPHERE\System\Config\ConfigInterface;
 
 /**
  * Interface ReaderInterface
+ *
  * @package SPHERE\System\Config\Reader
  */
 interface ReaderInterface extends ConfigInterface
 {
+
     /**
-     * @param string $File
+     * @param string|array $Content
+     *
      * @return ReaderInterface
      */
-    public function setConfig($File);
+    public function setConfig($Content);
 
     /**
      * @param string $Key
+     *
      * @return mixed|null|ConfigContainer
      */
     public function getValue($Key);
+
+    /**
+     * @return ConfigContainer
+     */
+    public function getConfig();
 }

@@ -31,6 +31,8 @@ class GlobalsTest extends \PHPUnit_Framework_TestCase
         $Mock = new GlobalsFactory();
         $this->assertInstanceOf('SPHERE\System\Globals\GlobalsInterface', $Mock);
 
+        $_GET = parse_ini_file(__DIR__.'/ConfigTest.ini', true);
+
         $Handler = $Mock->createHandler(new GetHandler());
         $this->assertInstanceOf('SPHERE\System\Globals\Handler\HandlerInterface', $Handler);
         $this->assertInstanceOf('SPHERE\System\Globals\Handler\GetHandler', $Handler);
@@ -38,10 +40,23 @@ class GlobalsTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('SPHERE\System\Config\ConfigInterface', $Handler->getConfig());
         $this->assertInstanceOf('SPHERE\System\Config\ConfigContainer', $Handler->getConfig());
 
-        $Handler->setValue('Test1.TestA','Value1');
-        $Handler->setValue('Test1.TestB','Value2');
-//        $Handler->setValue('Test1.TestB.Test1','Value3');
-//        var_dump( $Handler->getValue('Test1') );
+        $this->assertEquals( '0', $Handler->getConfig()->getContainer( 'Test1' )->getContainer( 'ValueA' )->getValue() );
+        $this->assertEquals( '0', $Handler->getValue( 'Test1.ValueA' ) );
+        $this->assertEquals( '1.0', $Handler->getConfig()->getContainer( 'Test1' )->getContainer( 'ValueB' )->getValue() );
+        $this->assertEquals( '1.0', $Handler->getValue( 'Test1.ValueB' ) );
+        $this->assertEquals( '2', $Handler->getConfig()->getContainer( 'Test1' )->getContainer( 'ValueC' )->getValue() );
+        $this->assertEquals( '2', $Handler->getValue( 'Test1.ValueC' ) );
+
+        $this->assertEquals( '1', $Handler->getConfig()->getContainer( 'Test2' )->getContainer( 'ValueA' )->getValue() );
+        $this->assertEquals( '1', $Handler->getValue( 'Test2.ValueA' ) );
+        $this->assertEquals( '', $Handler->getConfig()->getContainer( 'Test2' )->getContainer( 'ValueB' )->getValue() );
+        $this->assertEquals( '', $Handler->getValue( 'Test2.ValueB' ) );
+        $this->assertEquals( '', $Handler->getConfig()->getContainer( 'Test2' )->getContainer( 'ValueC' )->getValue() );
+        $this->assertEquals( '', $Handler->getValue( 'Test2.ValueC' ) );
+
+        $Handler->setValue( 'Test1.ValueD.ValueE', 'X' );
+
+        $_POST = parse_ini_file(__DIR__.'/ConfigTest.ini', true);
 
         $Handler = $Mock->createHandler(new PostHandler());
         $this->assertInstanceOf('SPHERE\System\Globals\Handler\HandlerInterface', $Handler);
@@ -49,5 +64,19 @@ class GlobalsTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf('SPHERE\System\Config\ConfigInterface', $Handler->getConfig());
         $this->assertInstanceOf('SPHERE\System\Config\ConfigContainer', $Handler->getConfig());
+
+        $this->assertEquals( '0', $Handler->getConfig()->getContainer( 'Test1' )->getContainer( 'ValueA' )->getValue() );
+        $this->assertEquals( '0', $Handler->getValue( 'Test1.ValueA' ) );
+        $this->assertEquals( '1.0', $Handler->getConfig()->getContainer( 'Test1' )->getContainer( 'ValueB' )->getValue() );
+        $this->assertEquals( '1.0', $Handler->getValue( 'Test1.ValueB' ) );
+        $this->assertEquals( '2', $Handler->getConfig()->getContainer( 'Test1' )->getContainer( 'ValueC' )->getValue() );
+        $this->assertEquals( '2', $Handler->getValue( 'Test1.ValueC' ) );
+
+        $this->assertEquals( '1', $Handler->getConfig()->getContainer( 'Test2' )->getContainer( 'ValueA' )->getValue() );
+        $this->assertEquals( '1', $Handler->getValue( 'Test2.ValueA' ) );
+        $this->assertEquals( '', $Handler->getConfig()->getContainer( 'Test2' )->getContainer( 'ValueB' )->getValue() );
+        $this->assertEquals( '', $Handler->getValue( 'Test2.ValueB' ) );
+        $this->assertEquals( '', $Handler->getConfig()->getContainer( 'Test2' )->getContainer( 'ValueC' )->getValue() );
+        $this->assertEquals( '', $Handler->getValue( 'Test2.ValueC' ) );
     }
 }

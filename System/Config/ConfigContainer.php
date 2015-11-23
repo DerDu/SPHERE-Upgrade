@@ -3,21 +3,26 @@ namespace SPHERE\System\Config;
 
 /**
  * Class ConfigContainer
+ *
  * @package SPHERE\System\Config
  */
 class ConfigContainer implements ConfigInterface
 {
+
     /** @var null|ConfigContainer|mixed $Value */
     private $Value = null;
 
     /**
      * ConfigContainer constructor.
+     *
      * @param string|array $Content
      */
     public function __construct($Content)
     {
+
         if (is_array($Content)) {
             array_walk($Content, function (&$Value) {
+
                 $Value = new ConfigContainer($Value);
             });
         }
@@ -26,24 +31,28 @@ class ConfigContainer implements ConfigInterface
 
     /**
      * @param string $Key
+     *
      * @return null|ConfigContainer|mixed
      */
     public function getContainer($Key)
     {
-        if (isset($this->Value[$Key])) {
+
+        if (isset( $this->Value[$Key] )) {
             return $this->Value[$Key];
         }
         return null;
     }
 
     /**
-     * @param string $Key
+     * @param string                     $Key
      * @param null|ConfigContainer|mixed $Value
+     *
      * @return ConfigContainer
      */
-    public function setContainer($Key,$Value)
+    public function setContainer($Key, $Value)
     {
-        if( $Value instanceof ConfigContainer ) {
+
+        if ($Value instanceof ConfigContainer) {
             $this->Value[$Key] = $Value;
         } else {
             $this->Value[$Key] = new ConfigContainer($Value);
@@ -51,8 +60,12 @@ class ConfigContainer implements ConfigInterface
         return $this;
     }
 
+    /**
+     * @return mixed|ConfigContainer
+     */
     public function getValue()
     {
+
         return $this->Value;
     }
 
@@ -62,6 +75,7 @@ class ConfigContainer implements ConfigInterface
      */
     public function __toString()
     {
+
         if (is_array($this->Value) || $this->Value instanceof ConfigContainer) {
             return json_encode($this->Value);
         } else {

@@ -2,7 +2,7 @@
 namespace SPHERE\System\Globals\Handler;
 
 use SPHERE\System\Config\ConfigContainer;
-use SPHERE\System\Config\Loader\LoaderInterface;
+use SPHERE\System\Config\Reader\ReaderInterface;
 use SPHERE\System\Globals\GlobalsInterface;
 
 /**
@@ -12,10 +12,10 @@ use SPHERE\System\Globals\GlobalsInterface;
 interface HandlerInterface extends GlobalsInterface
 {
     /**
-     * @param LoaderInterface $Config
+     * @param ReaderInterface $Config
      * @return HandlerInterface
      */
-    public function setConfig(LoaderInterface $Config = null);
+    public function setConfig(ReaderInterface $Config = null);
 
     /**
      * @return ConfigContainer
@@ -31,7 +31,7 @@ interface HandlerInterface extends GlobalsInterface
 
     /**
      * @param string $Key
-     * @return null|mixed
+     * @return null|mixed|ConfigContainer
      */
     public function getValue($Key);
 }
